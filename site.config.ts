@@ -9,12 +9,12 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Next.js Notion Starter Kit',
-  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
+  name: 'HONG',
+  domain: 'hongsanmu.top',
   author: 'HONG',
 
   // open graph metadata (optional)
-  description: 'Example Next.js Notion Starter Kit Site',
+  description: "world's best notion blog",
 
   // social usernames (optional)
   // mastodon: '#', // optional mastodon profile URL, provides link verification
