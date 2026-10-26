@@ -55,7 +55,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    creator: config.twitter ? `@${config.twitter}` : undefined,
     title: config.name,
     description: config.description
   },

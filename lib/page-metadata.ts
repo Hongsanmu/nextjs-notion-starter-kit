@@ -99,7 +99,6 @@ export function createPageMetadata(pageProps: PageProps): Metadata {
     },
     twitter: {
       card: socialImageUrl ? 'summary_large_image' : 'summary',
-      creator: config.twitter ? `@${config.twitter}` : undefined,
       title,
       description,
       images: socialImageUrl ? [socialImageUrl] : undefined
