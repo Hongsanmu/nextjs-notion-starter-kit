@@ -17,7 +17,8 @@ export default async function HomePage() {
     pageProps.recordMap && pageProps.site
       ? getHomepageDatabases(
           pageProps.recordMap,
-          pageProps.site.rootNotionPageId
+          pageProps.site.rootNotionPageId,
+          pageProps.site
         )
       : []
 
