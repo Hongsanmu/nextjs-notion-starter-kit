@@ -10,8 +10,8 @@ import {
 } from 'notion-utils'
 
 import { mapImageUrl } from './map-image-url'
-import { mapPageUrl } from './map-page-url'
-import type { ExtendedRecordMap, PageBlock, Site } from './types'
+import { getCanonicalPageId } from './get-canonical-page-id'
+import type { ExtendedRecordMap, PageBlock } from './types'
 
 export interface HomepageArticle {
   id: string
@@ -29,14 +29,12 @@ export interface HomepageDatabase {
 
 export function getHomepageDatabases(
   recordMap: ExtendedRecordMap,
-  rootPageId: string,
-  site: Site
+  rootPageId: string
 ): HomepageDatabase[] {
   const rootId = parsePageId(rootPageId, { uuid: true })
   const root = rootId ? getBlockValue(recordMap.block[rootId]) : undefined
   const databaseBlocks: import('notion-types').Block[] = []
   const visited = new Set<string>()
-  const createPageUrl = mapPageUrl(site, recordMap, new URLSearchParams())
 
   function visit(blockIds: string[] = []) {
     for (const id of blockIds) {
@@ -118,7 +116,10 @@ export function getHomepageDatabases(
             ? mapImageUrl(pageIcon, block) || pageIcon
             : undefined
           const pageUuid = parsePageId(id, { uuid: true })
-          if (!pageUuid || !createPageUrl(pageUuid)) {
+          const canonicalId = pageUuid
+            ? getCanonicalPageId(pageUuid, recordMap, { uuid: true })
+            : undefined
+          if (!canonicalId) {
             return undefined
           }
 
@@ -127,7 +128,7 @@ export function getHomepageDatabases(
             title,
             date,
             icon,
-            href: createPageUrl(pageUuid)
+            href: `/${canonicalId}`
           }
         })
         .filter((article): article is HomepageArticle => !!article)
