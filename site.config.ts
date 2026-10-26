@@ -14,7 +14,7 @@ export default siteConfig({
   author: 'HONG',
 
   // open graph metadata (optional)
-  description: "world's best notion blog",
+  description: "World's best notion blog",
 
   // social usernames (optional)
   // mastodon: '#', // optional mastodon profile URL, provides link verification
