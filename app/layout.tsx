@@ -27,11 +27,11 @@ export const metadata: Metadata = {
   description: config.description,
   manifest: '/manifest.json',
   icons: {
-    shortcut: '/favicon.ico',
+    shortcut: '/favicon.svg',
     icon: [
       {
-        url: '/favicon.png',
-        type: 'image/png',
+        url: '/favicon.svg',
+        type: 'image/svg+xml',
         sizes: '32x32'
       }
     ]
