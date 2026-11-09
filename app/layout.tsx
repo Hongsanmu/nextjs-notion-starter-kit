@@ -11,6 +11,9 @@ import '@/styles/notion.css'
 // global style overrides for prism theme (optional)
 import '@/styles/prism-theme.css'
 
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+
 import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
 
@@ -24,11 +27,11 @@ export const metadata: Metadata = {
   description: config.description,
   manifest: '/manifest.json',
   icons: {
-    shortcut: '/favicon.ico',
+    shortcut: '/favicon.svg',
     icon: [
       {
-        url: '/favicon.png',
-        type: 'image/png',
+        url: '/favicon.svg',
+        type: 'image/svg+xml',
         sizes: '32x32'
       }
     ]
@@ -55,7 +58,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    creator: config.twitter ? `@${config.twitter}` : undefined,
     title: config.name,
     description: config.description
   },
@@ -85,6 +87,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang='en' suppressHydrationWarning>
       <body>
         <Providers>{children}</Providers>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
